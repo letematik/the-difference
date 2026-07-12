@@ -1,14 +1,10 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://letematik.github.io',
-  base: '/the-difference',
-  
+  base: '/the-difference', // Esto es vital para que las rutas funcionen
   vite: {
     plugins: [tailwindcss()]
   }
-}); 
+});
