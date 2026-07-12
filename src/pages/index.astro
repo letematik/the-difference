@@ -6,73 +6,86 @@
   <meta charset="UTF-8" />
   <title>The Difference</title>
   <style>
-    /* Estilos globales */
-    body { background-color: black; color: white; font-family: sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-    
-    /* Contenedor que permite scroll en la primera pantalla si fuera necesario */
-    .screen { 
-      display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      width: 100%; min-height: 100vh; text-align: center; 
-      overflow-y: auto; /* Esto permite el scroll si el contenido crece */
+    /* El cuerpo ahora permite scroll vertical libremente sin alterar el diseño */
+    body { 
+      background-color: black; 
+      color: white; 
+      font-family: sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      overflow-x: hidden; 
+      overflow-y: auto; 
     }
     
-    /* Elementos Pantalla 1 */
+    .screen { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: flex-start; 
+      width: 100%; 
+      min-height: 100vh; 
+      text-align: center; 
+      padding: 60px 20px; 
+      box-sizing: border-box;
+    }
+    
     .main-img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 6px solid white; margin-bottom: 20px; }
     .subtitle { font-size: 1.2rem; letter-spacing: 0.15em; color: #9ca3af; text-transform: uppercase; margin-bottom: 30px; }
-    .btn-main { border: 6px solid white; padding: 30px 60px; font-size: 40px; font-weight: bold; text-transform: uppercase; cursor: pointer; background: transparent; color: white; transition: 0.3s; }
+    
+    .btn-main { 
+      border: 6px solid white; padding: 30px 60px; font-size: 40px; font-weight: bold; 
+      text-transform: uppercase; cursor: pointer; background: transparent; color: white; 
+      transition: 0.3s; margin-bottom: 60px; text-decoration: none; display: inline-block;
+    }
     .btn-main:hover { border-color: hotpink; color: hotpink; }
 
-    /* Elementos Pantalla 2 */
-    .btn-diff { border: 8px solid white; padding: 40px 80px; font-size: 80px; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; cursor: pointer; background: transparent; color: white; transition: 0.3s; }
-    .btn-diff:hover { border-color: hotpink; color: hotpink; }
-    .nav-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; }
-    .nav-btn { border: 4px solid white; padding: 20px 40px; font-size: 24px; font-weight: bold; color: yellow; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
-    .nav-btn:hover { border-color: hotpink; color: hotpink; }
+    .manifesto-container { max-width: 800px; text-align: left; font-family: monospace; line-height: 1.8; margin-top: 40px; border-top: 1px solid #333; padding-top: 40px; }
+    .manifesto-title { color: hotpink; font-size: 1.5rem; letter-spacing: 0.2em; margin-bottom: 30px; text-transform: uppercase; }
+    .manifesto-p { font-size: 1.15rem; color: #e5e7eb; margin-bottom: 25px; }
+    .manifesto-p-alt { font-size: 1.15rem; color: #9ca3af; margin-bottom: 25px; }
+    .manifesto-quote { border-left: 4px solid yellow; padding-left: 20px; font-size: 1.25rem; color: yellow; margin-top: 40px; font-style: italic; }
   </style>
 </head>
 <body>
 
-  <!-- PANTALLA 1 (Ahora con overflow-y: auto en .screen) -->
-  <div id="intro-screen" class="screen">
-    <img src="/pensador.jpg" class="main-img" />
-    <h2 style="font-size: 3rem; letter-spacing: 0.2em; font-weight: 300; margin-bottom: 10px;">FEELING AUSTISTIC</h2>
-    <p class="subtitle">NEURODIVERGENCE CREATIVE PHILOSOPHY PLATFORM SYSTEM LOG</p>
-    <button id="btn-enter" class="btn-main">THE DIFFERENCE</button>
-  </div>
+  <div class="screen">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 90vh;">
+      <img src="/pensador.jpg" class="main-img" />
+      <h2 style="font-size: 3rem; letter-spacing: 0.2em; font-weight: 300; margin-bottom: 10px;">FEELING AUSTISTIC</h2>
+      <p class="subtitle">NEURODIVERGENCE CREATIVE PHILOSOPHY PLATFORM SYSTEM LOG</p>
+      
+      <!-- Enlace real hacia tu menú de recuadros -->
+      <a href="/dashboard" class="btn-main">THE DIFFERENCE</a>
+      <p style="color: #6b7280; font-size: 0.9rem; letter-spacing: 0.1em;">(Haz scroll hacia abajo para leer el manifiesto)</p>
+    </div>
 
-  <!-- PANTALLA 2 -->
-  <div id="dashboard-screen" class="screen" style="display: none;">
-    <button id="btn-back" class="btn-diff">THE DIFFERENCE</button>
-    <div class="nav-grid">
-      <a href="/log" class="nav-btn">LOG</a>
-      <a href="/le-tematik" class="nav-btn">LE TEMATIK</a>
-      <a href="/nada-brahma" class="nav-btn">PROJECT NADA BRAHMA</a>
-      <a href="/texvn" class="nav-btn">TEXVN</a>
-      <a href="/quantumlab" class="nav-btn">QUANTUMLAB</a>
-      <a href="/pensamiento-autista" class="nav-btn">PENSAMIENTO AUTISTA</a>
-      <a href="/saiayin-do" class="nav-btn">SAIAYIN DO</a>
-      <a href="/ars-tekne" class="nav-btn">ARS TEKNE</a>
-      <a href="/quiron-theatre" class="nav-btn">QUIRÓN THEATRE</a>
+    <div class="manifesto-container">
+      <h3 class="manifesto-title">THE DIFFERENCE / MOOD GENIUS PLATFORM</h3>
+      <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 0.1em;">Neurodivergence + Creative Philosophy + System Log Human + ARS TEKNE + AI</p>
+      
+      <p class="manifesto-p">
+        <strong>QuantumLab</strong> es un laboratorio de investigación, creación y desarrollo donde convergen filosofía, arte, tecnología e inteligencia artificial para explorar nuevas formas de comprender la experiencia humana.
+      </p>
+      <p class="manifesto-p-alt">
+        Su fundamento es el <strong>Pensamiento Autista</strong>, entendido no como una categoría clínica, sino como un modelo epistemológico que privilegia la observación profunda, el reconocimiento de patrones, la fenomenología, el pensamiento crítico y la creación de sistemas.
+      </p>
+      <p class="manifesto-p">
+        La plataforma Mood Genius funciona como un <strong>System Log Human</strong>: una bitácora viva donde emociones, percepción, memoria, creatividad y lenguaje se transforman en conocimiento. Cada experiencia constituye un dato fenomenológico que puede ser interpretado por la persona y asistido por inteligencia artificial, sin reemplazar su capacidad de reflexión.
+      </p>
+      <p class="manifesto-p-alt">
+        Desde <strong>ARS TEKNE</strong>, la antigua unión entre arte (ars) y técnica (téchne), la tecnología deja de ser únicamente una herramienta de productividad para convertirse en una extensión del pensamiento, la sensibilidad y la imaginación.
+      </p>
+      <p class="manifesto-p">
+        La inteligencia artificial no ocupa el lugar del ser humano; amplifica su capacidad para observar, crear, relacionar y construir significado.
+      </p>
+      <p class="manifesto-p-alt">
+        <strong>Le Tematik</strong> representa el espacio donde esta investigación se convierte en experiencias culturales, diseño, música, educación, tecnología e innovación.
+      </p>
+      <div class="manifesto-quote">
+        "No buscamos automatizar a las personas. Buscamos ampliar la conciencia mediante sistemas creativos que permitan comprender mejor cómo pensamos, sentimos, aprendemos y creamos."
+      </div>
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const btnEnter = document.getElementById('btn-enter');
-      const btnBack = document.getElementById('btn-back');
-      const intro = document.getElementById('intro-screen');
-      const dash = document.getElementById('dashboard-screen');
-
-      btnEnter.addEventListener('click', () => {
-        intro.style.display = 'none';
-        dash.style.display = 'flex';
-      });
-
-      btnBack.addEventListener('click', () => {
-        dash.style.display = 'none';
-        intro.style.display = 'flex';
-      });
-    });
-  </script>
 </body>
 </html>
