@@ -1,68 +1,90 @@
 ---
+import Layout from '../layouts/Layout.astro';
 ---
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>The Difference</title>
-  <style>
-    /* El cuerpo ahora permite scroll vertical libremente sin alterar el diseño */
-    body {
-      background-color: black;
-      color: white;
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
+<Layout title="The Difference">
+  <!-- PANTALLA 1: INICIO + FILOSOFÍA (Permite scroll hacia abajo) -->
+  <div id="intro-screen" class="screen">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 90vh;">
+      <img src="/assets/pensador.jpg" class="main-img" />
+      <h2 style="font-size: 3rem; letter-spacing: 0.2em; font-weight: 300; margin-bottom: 10px;">FEELING AUSTISTIC</h2>
+      <p class="subtitle">NEURODIVERGENCE CREATIVE PHILOSOPHY PLATFORM SYSTEM LOG</p>
+      <button id="btn-enter" class="btn-main">THE DIFFERENCE</button>
+      <p style="color: #6b7280; font-size: 0.9rem; letter-spacing: 0.1em;">(Haz scroll hacia abajo para leer el manifiesto)</p>
+    </div>
 
-    .screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      min-height: 100vh;
-      text-align: center;
-      padding: 60px 20px;
-      box-sizing: border-box;
-    }
+    <!-- AQUÍ SE INTEGRA TU TEXTO FILOSÓFICO -->
+    <div class="manifesto-container">
+      <h3 class="manifesto-title">THE DIFFERENCE / MOOD GENIUS PLATFORM</h3>
+      <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 0.1em;">Neurodivergence + Creative Philosophy + System Log Human + ARS TEKNE + AI</p>
 
-    .pensador-img {
-      max-width: 80%;
-      height: auto;
-      margin-bottom: 40px;
-      border: 2px solid white;
-    }
+      <p class="manifesto-p">
+        <strong>QuantumLab</strong> es un laboratorio de investigación, creación y desarrollo donde convergen filosofía, arte, tecnología e inteligencia artificial para explorar nuevas formas de comprender la experiencia humana.
+      </p>
 
-    .btn-dashboard {
-      border: 4px solid white;
-      padding: 20px 40px;
-      font-size: 24px;
-      font-weight: bold;
-      color: yellow;
-      text-decoration: none;
-      transition: 0.3s;
-      text-transform: uppercase;
-      display: inline-block;
-    }
+      <p class="manifesto-p-alt">
+        Su fundamento es el <strong>Pensamiento Autista</strong>, entendido no como una categoría clínica, sino como un modelo epistemológico que privilegia la observación profunda, el reconocimiento de patrones, la fenomenología, el pensamiento crítico y la creación de sistemas.
+      </p>
 
-    .btn-dashboard:hover {
-      border-color: hotpink;
-      color: hotpink;
-    }
-  </style>
-</head>
-<body>
+      <p class="manifesto-p">
+        La plataforma Mood Genius funciona como un <strong>System Log Human</strong>: una bitácora viva donde emociones, percepción, memoria, creatividad y lenguaje se transforman en conocimiento. Cada experiencia constituye un dato fenomenológico que puede ser interpretado por la persona y asistido por inteligencia artificial, sin reemplazar su capacidad de reflexión.
+      </p>
 
-  <div class="screen">
-    <!-- Imagen cargada desde la carpeta INICIO con la base dinámica -->
-    <img src={import.meta.env.BASE_URL + "INICIO/pensador.jpg"} alt="El Pensador" class="pensador-img" />
+      <p class="manifesto-p-alt">
+        Desde <strong>ARS TEKNE</strong>, la antigua unión entre arte (ars) y técnica (téchne), la tecnología deja de ser únicamente una herramienta de productividad para convertirse en una extensión del pensamiento, la sensibilidad y la imaginación.
+      </p>
 
-    <!-- Botón para ir al dashboard -->
-    <a href={import.meta.env.BASE_URL + "dashboard"} class="btn-dashboard">IR AL DASHBOARD</a>
+      <p class="manifesto-p">
+        La inteligencia artificial no ocupa el lugar del ser humano; amplifica su capacidad para observar, crear, relacionar y construir significado.
+      </p>
+
+      <p class="manifesto-p-alt">
+        <strong>Le Tematik</strong> representa el espacio donde esta investigación se convierte en experiencias culturales, diseño, música, educación, tecnología e innovación.
+      </p>
+
+      <div class="manifesto-quote">
+        "No buscamos automatizar a las personas. Buscamos ampliar la conciencia mediante sistemas creativos que permitan comprender mejor cómo pensamos, sentimos, aprendemos y creamos."
+      </div>
+    </div>
   </div>
 
-</body>
-</html>
+  <!-- PANTALLA 2: DASHBOARD INTERACTIVO -->
+  <div id="dashboard-screen" class="screen flex-center" style="display: none;">
+    <button id="btn-back" class="btn-diff">THE DIFFERENCE</button>
+    <div class="nav-grid">
+      <a href="/log" class="nav-btn">LOG</a>
+      <a href="/le-tematik" class="nav-btn">LE TEMATIK</a>
+      <a href="/nada-brahma" class="nav-btn">PROJECT NADA BRAHMA</a>
+      <a href="/texvn" class="nav-btn">TEXVN</a>
+      <a href="/quantumlab" class="nav-btn">QUANTUMLAB</a>
+      <a href="/pensamiento-autista" class="nav-btn">PENSAMIENTO AUTISTA</a>
+      <a href="/saiayin-do" class="nav-btn">SAIAYIN DO</a>
+      <a href="/ars-tekne" class="nav-btn">ARS TEKNE</a>
+      <a href="/quiron-theatre" class="nav-btn">QUIRÓN THEATRE</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnEnter = document.getElementById('btn-enter');
+      const btnBack = document.getElementById('btn-back');
+      const intro = document.getElementById('intro-screen');
+      const dash = document.getElementById('dashboard-screen');
+
+      if (!btnEnter || !btnBack || !intro || !dash) {
+        return;
+      }
+
+      btnEnter.addEventListener('click', () => {
+        intro.style.display = 'none';
+        dash.style.display = 'flex';
+        window.scrollTo(0, 0);
+      });
+
+      btnBack.addEventListener('click', () => {
+        dash.style.display = 'none';
+        intro.style.display = 'flex';
+        window.scrollTo(0, 0);
+      });
+    });
+  </script>
+</Layout>
