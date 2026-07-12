@@ -1,7 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
+<style>
+  .audio-player {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 10px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .audio-btn,
+  .audio-select {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .audio-btn:hover,
+  .audio-select:hover {
+    border-color: hotpink;
+    color: hotpink;
+  }
+</style>
+
 <Layout title="The Difference">
+  <div class="audio-player">
+    <button id="audio-toggle" class="audio-btn">♪ ON</button>
+    <select id="audio-track" class="audio-select">
+      <option value="">Sin audio</option>
+      <option value="/assets/ambient.mp3">Ambient</option>
+      <option value="/assets/loop.mp3">Loop</option>
+    </select>
+    <audio id="audio-element" loop></audio>
+  </div>
+
   <!-- PANTALLA 1: INICIO + FILOSOFÍA (Permite scroll hacia abajo) -->
   <div id="intro-screen" class="screen">
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 90vh;">
@@ -12,7 +58,6 @@ import Layout from '../layouts/Layout.astro';
       <p style="color: #6b7280; font-size: 0.9rem; letter-spacing: 0.1em;">(Haz scroll hacia abajo para leer el manifiesto)</p>
     </div>
 
-    <!-- AQUÍ SE INTEGRA TU TEXTO FILOSÓFICO -->
     <div class="manifesto-container">
       <h3 class="manifesto-title">THE DIFFERENCE / MOOD GENIUS PLATFORM</h3>
       <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 0.1em;">Neurodivergence + Creative Philosophy + System Log Human + ARS TEKNE + AI</p>
@@ -45,6 +90,61 @@ import Layout from '../layouts/Layout.astro';
         "No buscamos automatizar a las personas. Buscamos ampliar la conciencia mediante sistemas creativos que permitan comprender mejor cómo pensamos, sentimos, aprendemos y creamos."
       </div>
     </div>
+
+    <div class="carousel-shell">
+      <div class="carousel-frame">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del recorrido interno" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / entrada</p>
+              <h3>Un mapa de piezas vivas</h3>
+              <p>La navegación interna revela proyectos de arte, sistema, música y pensamiento que se entrelazan.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa de la bitácora del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / sistema</p>
+              <h3>Una bitácora en movimiento</h3>
+              <p>Cada sección sugiere una ruta distinta: observación, creación, memoria y experiencia sensorial.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del lenguaje sensorial" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / atmósfera</p>
+              <h3>Una experiencia sensorial</h3>
+              <p>La plataforma se despliega como un recorrido de imágenes, texto, sonido y presencia.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del recorrido interno" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / entrada</p>
+              <h3>Un mapa de piezas vivas</h3>
+              <p>La navegación interna revela proyectos de arte, sistema, música y pensamiento que se entrelazan.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa de la bitácora del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / sistema</p>
+              <h3>Una bitácora en movimiento</h3>
+              <p>Cada sección sugiere una ruta distinta: observación, creación, memoria y experiencia sensorial.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del lenguaje sensorial" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Spoiler / atmósfera</p>
+              <h3>Una experiencia sensorial</h3>
+              <p>La plataforma se despliega como un recorrido de imágenes, texto, sonido y presencia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- PANTALLA 2: DASHBOARD INTERACTIVO -->
@@ -61,6 +161,60 @@ import Layout from '../layouts/Layout.astro';
       <a href="/ars-tekne" class="nav-btn">ARS TEKNE</a>
       <a href="/quiron-theatre" class="nav-btn">QUIRÓN THEATRE</a>
     </div>
+    <div class="carousel-shell" style="margin-top: 30px;">
+      <div class="carousel-frame">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del dashboard" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / vista</p>
+              <h3>Una entrada visual</h3>
+              <p>Las imágenes acompañan la navegación sin ocupar el lugar principal de los accesos.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa de la bitácora del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / atmósfera</p>
+              <h3>Una pista del recorrido</h3>
+              <p>Cada imagen sugiere una dirección diferente dentro del sistema.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / memoria</p>
+              <h3>Un recorrido abierto</h3>
+              <p>El carrusel convierte la exploración en una experiencia más fluida y evocadora.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del dashboard" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / vista</p>
+              <h3>Una entrada visual</h3>
+              <p>Las imágenes acompañan la navegación sin ocupar el lugar principal de los accesos.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa de la bitácora del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / atmósfera</p>
+              <h3>Una pista del recorrido</h3>
+              <p>Cada imagen sugiere una dirección diferente dentro del sistema.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/assets/pensador.jpg" alt="Vista previa del sistema" class="carousel-image" />
+            <div class="carousel-caption">
+              <p class="carousel-label">Dashboard / memoria</p>
+              <h3>Un recorrido abierto</h3>
+              <p>El carrusel convierte la exploración en una experiencia más fluida y evocadora.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -69,10 +223,41 @@ import Layout from '../layouts/Layout.astro';
       const btnBack = document.getElementById('btn-back');
       const intro = document.getElementById('intro-screen');
       const dash = document.getElementById('dashboard-screen');
+      const toggle = document.getElementById('audio-toggle');
+      const track = document.getElementById('audio-track');
+      const audio = document.getElementById('audio-element');
 
-      if (!btnEnter || !btnBack || !intro || !dash) {
+      if (!btnEnter || !btnBack || !intro || !dash || !toggle || !track || !(audio instanceof HTMLAudioElement)) {
         return;
       }
+
+      let isPlaying = false;
+
+      toggle.addEventListener('click', () => {
+        if (!track.value) {
+          return;
+        }
+
+        if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+          toggle.textContent = '♪ ON';
+        } else {
+          audio.play().catch(() => {});
+          isPlaying = true;
+          toggle.textContent = '♪ OFF';
+        }
+      });
+
+      track.addEventListener('change', () => {
+        const src = track.value;
+        audio.src = src;
+        audio.load();
+
+        if (src && isPlaying) {
+          audio.play().catch(() => {});
+        }
+      });
 
       btnEnter.addEventListener('click', () => {
         intro.style.display = 'none';
